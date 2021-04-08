@@ -20,13 +20,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::Group(['prefix' => 'auth'], function () { 
-
 	Route::get('/login', [AuthController::class, 'login'])->name('login');
+	Route::get('/register', [AuthController::class, 'register'])->name('register');
+
+	Route::post('/register', [AuthController::class, 'postRegister'])->name('store.register');
+	Route::post('/login', [AuthController::class, 'postLogin'])->name('store.login');
+	
 });
 
-/*****************ADMIN ROUTES*******************/
+/*****************************ADMIN ROUTES*****************************/
 Route::Group(['prefix' => 'admin'], function () { 
 
 	Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('admin');
