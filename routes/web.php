@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AdminDashboard;
+use App\Http\Controllers\AuthController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +18,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::Group(['prefix' => 'auth'], function () { 
+
+	Route::get('/login', [AuthController::class, 'login'])->name('login');
+});
+
+/*****************ADMIN ROUTES*******************/
+Route::Group(['prefix' => 'admin'], function () { 
+
+	Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('admin');
+
 });
