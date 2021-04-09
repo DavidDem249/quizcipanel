@@ -23,15 +23,53 @@ class AuthController extends Controller
 
     public function postLogin(Request $request)
     {
-        // dd($request);
 
-        $client = new GuzzleHttp\Client();
-        $res = $client->request('GET', 'http://localhost/vas_tech/ctmbp17/authentification', [
-            'auth' => ['login', 'password']
+        $data = $request->validate([
+            'login' => 'required',
+            'password' => 'required',
         ]);
 
-        if($res){
+        //dd($data);
+        // dd($request);
+        /*
+        $client = new \GuzzleHttp\Client();
+
+        $res = $client->request('POST', 'http://localhost/vas_tech/ctmbp17/authentification', [
+            'auth' => ['login', 'password']
+        ]);
+        */
+
+        $client = new \GuzzleHttp\Client();
+        $url = "http://localhost/vas_tech/ctmbp17/authentification";
+        /*$response = $client->post($url, [
+            'headers' => ['Content-type' => 'application/json'],
+            'auth' => [
+                'david7@gmail.com', 
+                '$2y$10$GlGbRRqTRyfqOYLqjQad.uJqm/X7GqamsjM/hBazsQIpiZIymsRRW'
+            ],
+            'json' => [                        
+                "login"=>"david7@gmail.com",
+            ], 
+        ]); */
+
+        $response = $client->request('POST', 'http://localhost/vas_tech/ctmbp17/authentification', 
+            ['form_params' => 
+                [
+                    'login' => $data['login'], 
+                    'password' => $data['password']
+                ]
+            ]
+        );
+        dd($response->getBody());
+        if($response){
+
+            $user = $response->getBody()->getContents();
+            $data = json_decode($user);
+            $data_collect = collect($data->users);
+
+            //dd($data_collect[0]->pass);
             echo "Connecté";
+
         }else{
             echo "Non connecté";
         }

@@ -18,7 +18,7 @@
                 <div class="form-group position-relative has-icon-left">
                     <label for="username">Email</label>
                     <div class="position-relative">
-                        <input type="text" class="form-control" id="username">
+                        <input type="text" name="login" class="form-control" id="username">
                         <div class="form-control-icon">
                             <i data-feather="user"></i>
                         </div>
@@ -27,12 +27,12 @@
                 <div class="form-group position-relative has-icon-left">
                     <div class="clearfix">
                         <label for="password">Mot de passe</label>
-                        <a href="auth-forgot-password.html" class='float-end'>
+                        <a href="#" class='float-end'>
                             <small>Mot de passe oublié?</small>
                         </a>
                     </div>
                     <div class="position-relative">
-                        <input type="password" class="form-control" id="password">
+                        <input name="password" type="password" class="form-control" id="password">
                         <div class="form-control-icon">
                             <i data-feather="lock"></i>
                         </div>
