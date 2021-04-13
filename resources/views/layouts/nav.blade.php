@@ -32,14 +32,16 @@
                     <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
                     
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><i data-feather="log-out"></i> Logout</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}">
+                        <i data-feather="log-out"></i> Logout
+                    </a>
                 </div>
             </li>
             <li class="dropdown">
                 <a href="#" data-bs-toggle="dropdown"
                     class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                     <div class="avatar me-1">
-                        <img src="assets/images/avatar/avatar-s-1.png" alt="" srcset="">
+                        <img src="{{ asset('assets/images/avatar/avatar-s-1.png') }}" alt="" srcset="">
                     </div>
                     <div class="d-none d-md-block d-lg-inline-block">Salut, Dembele</div>
                 </a>
@@ -47,7 +49,9 @@
                     <a class="dropdown-item" href="#"><i data-feather="user"></i> Account</a>
                     
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><i data-feather="log-out"></i> Logout</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}">
+                        <i data-feather="log-out"></i> Logout
+                    </a>
                 </div>
             </li>
         </ul>

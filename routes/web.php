@@ -26,12 +26,16 @@ Route::Group(['prefix' => 'auth'], function () {
 
 	Route::post('/authregister', [AuthController::class, 'postRegister'])->name('store.register');
 	Route::post('/authlogin', [AuthController::class, 'postLogin'])->name('store.login');
+	Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 	
 });
 
-/*****************************ADMIN ROUTES*****************************/
+
+/*****************************ADMIN ROUTES****************************************/
 Route::Group(['prefix' => 'admin'], function () { 
 
 	Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('admin');
+	Route::get('/questions', [AdminDashboard::class, 'questions'])->name('show.questions');
+	Route::get('/question/propositions/{id_question}', [AdminDashboard::class, 'propositionsQuestion'])->name('propositions');
 
 });

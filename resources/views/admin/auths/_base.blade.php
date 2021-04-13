@@ -9,6 +9,9 @@
 
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.svg') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('iziToast/dist/css/iziToast.min.css') }}">
+    
 </head>
 
 <body>

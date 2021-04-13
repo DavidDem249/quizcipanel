@@ -15,6 +15,39 @@
             </div>
             <form method="POST" action="{{ route('store.login') }}">
                 @csrf
+
+                 @if(session()->has('error'))
+                        <script src="{{ asset('iziToast/dist/js/iziToast.min.js') }}" type="text/javascript"></script>
+                        <script type="text/javascript">
+                            iziToast.error({
+                            theme: 'light',
+                            message: "{{ session()->get('error')}}",
+                            //backgroundColor: 'green',
+                            //messageSize: 12,
+                            timeout: 8000,
+                            position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+                           //progressBarColor: 'rgb(100, 255, 104)',
+                        
+                           });
+                        </script>
+                 @endif
+
+                  @if(session()->has('success'))
+                        <script src="{{ asset('iziToast/dist/js/iziToast.min.js') }}" type="text/javascript"></script>
+                        <script type="text/javascript">
+                            iziToast.success({
+                            theme: 'light',
+                            message: "{{ session()->get('success')}}",
+                            //backgroundColor: 'green',
+                            //messageSize: 12,
+                            timeout: 8000,
+                            position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+                           //progressBarColor: 'rgb(100, 255, 104)',
+                        
+                           });
+                        </script>
+                 @endif
+
                 <div class="form-group position-relative has-icon-left">
                     <label for="username">Email</label>
                     <div class="position-relative">

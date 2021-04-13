@@ -3,7 +3,8 @@
 
 <head>
     @include('layouts.head')
-
+    <link rel="stylesheet" href="{{ asset('iziToast/dist/css/iziToast.min.css') }}">
+    
     @yield('style')
 </head>
 
