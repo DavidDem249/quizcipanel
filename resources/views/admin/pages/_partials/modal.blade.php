@@ -11,27 +11,38 @@
                         <i data-feather="x"></i>
                     </button>
                 </div>
-                <form method="POST" action="#">
+                <form method="POST" action="{{ route('add.question') }}">
+                    @csrf
                     <div class="modal-body">
+
                         <div class="form-group">
                             <label for="helpInputTop">LIBELLE</label>
-                            
-                            <input name="question" type="text" class="form-control" id="helpInputTop">
+                           
+                            <input name="libelle" type="text" class="form-control" id="helpInputTop">
                         </div>
+
+                        <div class="form-group">
+                            <label for="helpInputTop">Status</label>
+                            
+                            <fieldset class="form-group">
+                                <select class="form-select" id="basicSelect" name="status">
+                                    <option>Choisissez un status</option>
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                            </fieldset>
+                        </div>
+
                     </div>
                     <div class="modal-footer">
+                        
+                        <input type="submit" value="ENREGISTRER" class="btn btn-primary ml-1">
+
                         <button type="button" class="btn btn-danger"
                             data-bs-dismiss="modal">
                             <i class="bx bx-x d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">SORTIR</span>
+                            <span class="d-none d-sm-block">ANNULER</span>
                         </button>
-
-                        {{--<button type="button" class="btn btn-primary ml-1"
-                            data-bs-dismiss="modal">
-                            <i class="bx bx-check d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">ENREGISTRER</span>
-                        </button>--}}
-                        <input type="submit" value="ENREGISTRER" class="btn btn-primary ml-1">
 
                     </div>
                 </form>

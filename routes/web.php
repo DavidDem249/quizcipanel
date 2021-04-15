@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminDashboard;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\QuestionsController;
+use App\Http\Controllers\AbonneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +37,16 @@ Route::Group(['prefix' => 'auth'], function () {
 Route::Group(['prefix' => 'admin'], function () { 
 
 	Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('admin');
+
+
 	Route::get('/questions', [AdminDashboard::class, 'questions'])->name('show.questions');
 	Route::get('/question/propositions/{id_question}', [AdminDashboard::class, 'propositionsQuestion'])->name('propositions');
+
+
+	Route::post('/add-question', [QuestionsController::class, 'addQuestion'])->name('add.question');
+	Route::post('/add-questions', [QuestionsController::class, 'addQuestions'])->name('add.questions');
+	Route::get('/abonnes', [AbonneController::class, 'getAllAbonnes'])->name('allabonnes');
+	Route::get('/abonne/details/{id_abonne}', [AbonneController::class, 'getDetailsAbonne'])->name('detail.abonne');
+	//Route::post('/add-questions', [QuestionsController::class, 'addQuestions'])->name('add.questions');
 
 });

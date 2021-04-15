@@ -7,6 +7,23 @@
 @stop
 
 @section('content')
+
+	@if(session()->has('questadd'))
+        <script src="{{ asset('iziToast/dist/js/iziToast.min.js') }}" type="text/javascript"></script>
+        <script type="text/javascript">
+            iziToast.success({
+            theme: 'light',
+            message: "{{ session()->get('questadd')}}",
+            //backgroundColor: 'green',
+            //messageSize: 12,
+            timeout: 8000,
+            position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+           //progressBarColor: 'rgb(100, 255, 104)',
+        
+           });
+        </script>
+    @endif
+
 	<div class="main-content container-fluid">
         <div class="page-title">
             <div class="row">
@@ -37,8 +54,14 @@
                     <div style="float:right;">
                     	<!-- <a href="#"> -->
                     		<button class="btn btn-info btn-outline-info" style="border-radius: 20px;" type="button" class="close" data-bs-toggle="modal" data-bs-target="#inlineForm">
-	                            Add question 
+	                            Ajouter une question 
 	                        </button>
+
+	                        <a href="#">
+		                        <button class="btn btn-warning btn-outline-success" style="border-radius: 20px;">
+		                            Ajouter des questions
+		                        </button>
+		                    </a>
                     	<!-- </a> -->
                     </div>
                 </div>
@@ -72,11 +95,13 @@
 	                                   <a title="Voir proposition" href="{{ route('propositions', ['id_question' => $data->id]) }}" class="btn icon btn-info">
 	                                   		<i data-feather="eye"></i>
 	                                   	</a>
-	                                   	<!-- <a href="{{ $data->id }}" class="btn icon btn-success">
-	                                    	<i data-feather="plus"></i>
-	                                    </a> -->
+	                                   	
 	                                    <a title="Supprimer question" href="{{ $data->id }}" class="btn icon btn-danger">
 	                                    	<i data-feather="trash"></i>
+	                                    </a>
+
+	                                    <a title="Désactiver la question" href="{{ $data->id }}" class="btn icon btn-warning">
+	                                    	<i data-feather="plus"></i>
 	                                    </a>
 	                                </td>
 	                            </tr>

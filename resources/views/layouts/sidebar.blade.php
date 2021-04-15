@@ -26,13 +26,15 @@
 
                 </li>
 
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i data-feather="briefcase" width="20"></i>
-                        <span>Liste des questions</span>
+
+                <li class="sidebar-item  ">
+                    <a href="{{ route('allabonnes') }}" class='sidebar-link'>
+                        <i data-feather="layout" width="20"></i>
+                        <span>Abonnes</span>
                     </a>
 
                 </li>
+
                 
             </ul>
         </div>

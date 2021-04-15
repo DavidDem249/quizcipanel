@@ -1,7 +1,7 @@
 @extends('base.master',['title' => 'Dashboard'])
 
 @section('style')
-
+    <link rel="stylesheet" href="{{ asset('assets/vendors/apexcharts/apexcharts.css') }}">
 @stop
 
 @section('content')
@@ -29,7 +29,7 @@
         </div>
 
 
-        <section class="section">
+        <!-- <section class="section">
         	<div class="row mb-4">
                 <div class="col-md-8">
                     <div class="card">
@@ -38,22 +38,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <!-- <div class="col-md-4 col-12">
-                                    <div class="pl-3">
-                                        <h1 class='mt-5'>$21,102</h1>
-                                        <p class='text-xs'><span class="text-green"><i data-feather="bar-chart" width="15"></i> +19%</span> than last month</p>
-                                        <div class="legends">
-                                            <div class="legend d-flex flex-row align-items-center">
-                                                <div class='w-3 h-3 rounded-full bg-info me-2'></div><span
-                                                    class='text-xs'>Last Month</span>
-                                            </div>
-                                            <div class="legend d-flex flex-row align-items-center">
-                                                <div class='w-3 h-3 rounded-full bg-blue me-2'></div><span
-                                                    class='text-xs'>Current Month</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
+                                
                                 <div class="col-md-8 col-12">
                                     <canvas id="bar"></canvas>
                                 </div>
@@ -63,6 +48,77 @@
                     
                 </div>
             </div>
+        </section> -->
+
+         <section class="section">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Radial Gradient Chart</h4>
+                        </div>
+                        <div class="card-body">
+                            <div style="width:75%;">
+                                {!! $chartjs->render() !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Radial Gradient Chart</h4>
+                        </div>
+                        <div class="card-body">
+                            <div style="width:75%;">
+                                {!! $datajs->render() !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            {{--<div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Line Chart</h4>
+                        </div>
+                        <div class="card-body">
+                            <div id="line"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Bar Chart</h4>
+                        </div>
+                        <div class="card-body">
+                            <div id="bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Radial Gradient Chart</h4>
+                        </div>
+                        <div class="card-body">
+                            <div id="candle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>--}}
         </section>
     </div>
+@stop
+
+
+@section('script')
+    <script src="{{ asset('assets/vendors/dayjs/dayjs.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/ui-apexchart.js') }}"></script>
 @stop

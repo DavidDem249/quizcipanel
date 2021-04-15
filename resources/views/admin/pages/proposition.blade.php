@@ -7,6 +7,22 @@
 @section('content')
 	{{--@livewire('proposition')--}}
 
+	@if(session()->has('propositonadd'))
+        <script src="{{ asset('iziToast/dist/js/iziToast.min.js') }}" type="text/javascript"></script>
+        <script type="text/javascript">
+            iziToast.success({
+            theme: 'light',
+            message: "{{ session()->get('propositonadd')}}",
+            //backgroundColor: 'green',
+            //messageSize: 12,
+            timeout: 8000,
+            position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+           //progressBarColor: 'rgb(100, 255, 104)',
+        
+           });
+        </script>
+    @endif
+
 	 <div class="main-content container-fluid">
         <!-- <div class="page-title">
             <h3>Dashboard</h3>
@@ -16,7 +32,8 @@
         </div>  -->
         <section class="section">
         	<div class="row mb-4">
-        		<h4 style="text-align: center;font-weight: bold;color:#788552;">LES PROPOSITIONS DE LA QUESTION </h4>
+        		<h4 style="text-align: center;font-weight: bold;color:#788552;">
+        			LES PROPOSITIONS DE LA QUESTION </h4>
                 <div class="col-md-12">
                 	<div class="card">
                 		
@@ -38,6 +55,7 @@
                                             <!-- <th>ID</th> -->
                                             <th>LIBELE</th>
                                             <th>Status</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -57,6 +75,20 @@
 		                                                </span>
 		                                           	@endif
 	                                            </td>
+
+	                                            <td>
+				                                   <a title="Voir proposition" href="" class="btn icon btn-info">
+				                                   		<i data-feather="eye"></i>
+				                                   	</a>
+				                                   	
+				                                    <a title="Supprimer question" href="{{ $proposition->id }}" class="btn icon btn-danger">
+				                                    	<i data-feather="trash"></i>
+				                                    </a>
+
+				                                    <a title="Désactiver la question" href="{{ $proposition->id }}" class="btn icon btn-warning">
+				                                    	<i data-feather="alert-triangle"></i>
+				                                    </a>
+				                                </td>
 	                                        </tr>
 	                                    @endforeach
                                        
@@ -85,19 +117,20 @@
 	                        <i data-feather="x"></i>
 	                    </button>
 	                </div>
-	                <form method="POST" action="#">
+	                <form method="POST" action="{{ route('add.questions') }}">
+	                	@csrf
 	                    <div class="modal-body">
 	                        <div class="form-group">
 	                            <label for="helpInputTop">LIBELLE</label>
-	                            
-	                            <input name="question" type="text" class="form-control" id="helpInputTop">
+	                             <input value="{{$getProposition->data[0]->id}} " name="id_question" type="hidden" class="form-control">
+	                            <input name="libelle" type="text" class="form-control" id="helpInputTop">
 	                        </div>
 
 	                        <div class="form-group">
 	                            <label for="helpInputTop">Status</label>
 	                            
 	                            <fieldset class="form-group">
-	                                <select class="form-select" id="basicSelect">
+	                                <select class="form-select" id="basicSelect" name="correct">
 	                                    <option>Choisissez un status</option>
 	                                    <option value="1">Correct</option>
 	                                    <option value="0">Incorrect</option>
@@ -107,11 +140,7 @@
 
 	                    </div>
 	                    <div class="modal-footer">
-	                        <button type="button" class="btn btn-danger"
-	                            data-bs-dismiss="modal">
-	                            <i class="bx bx-x d-block d-sm-none"></i>
-	                            <span class="d-none d-sm-block">SORTIR</span>
-	                        </button>
+	                        
 
 	                        {{--<button type="button" class="btn btn-primary ml-1"
 	                            data-bs-dismiss="modal">
@@ -119,6 +148,12 @@
 	                            <span class="d-none d-sm-block">ENREGISTRER</span>
 	                        </button>--}}
 	                        <input type="submit" value="ENREGISTRER" class="btn btn-primary ml-1">
+
+	                        <button type="button" class="btn btn-danger"
+	                            data-bs-dismiss="modal">
+	                            <i class="bx bx-x d-block d-sm-none"></i>
+	                            <span class="d-none d-sm-block">SORTIR</span>
+	                        </button>
 
 	                    </div>
 	                </form>
